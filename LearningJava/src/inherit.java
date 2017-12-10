@@ -1,0 +1,19 @@
+
+public class inherit {
+/*
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Person bob = new Person("Coach Bob", 27, "M");
+		System.out.println(bob);
+
+		Student lynne = new Student("Lynne Brooke", 16, "F", "HS95129", 3.5);
+		System.out.println(lynne);
+
+		teacher mrJava = new teacher("Duke Java", 34, "M", "Computer Science", 50000);
+		System.out.println(mrJava);
+
+		college ima = new college("Ima Frosh", 18, "F", "UCB123", 4.0, "English", 1);
+		System.out.println(ima);
+	}
+*/
+}
