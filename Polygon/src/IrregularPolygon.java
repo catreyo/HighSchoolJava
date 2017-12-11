@@ -15,8 +15,8 @@ public class IrregularPolygon {
         //Add points below
         ip.add(new Point2D.Double(20,10));
         ip.add(new Point2D.Double(70,20));
-        ip.add(new Point2D.Double(50,50));
         ip.add(new Point2D.Double(0,40));
+        ip.add(new Point2D.Double(50,50));
         ip.draw();
         System.out.println("Perimeter: " + ip.perimeter());
         System.out.println("Area: " + ip.area());
@@ -72,7 +72,12 @@ public class IrregularPolygon {
         return Math.abs(area/2.0);
     }
     
-    public boolean onePolygon() {
-        
+    public /**boolean**/ void onePolygon() {
+        //do the lines intersect????
+        for(int i = 0; i < myPolygon.size()-1; i++) {
+            Point2D.Double point01 = myPolygon.get(i);
+            Point2D.Double point02 = myPolygon.get(i+1);
+            double slope = (point02.y - point01.y); //add more
+        }        
     }
 }
