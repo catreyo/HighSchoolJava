@@ -8,23 +8,13 @@ public class IrregularPolygon {
     private ArrayList<Double> peri = new ArrayList<Double>();
     private DrawingTool myPencil;
     private SketchPad myPaper;
-
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        IrregularPolygon ip = new IrregularPolygon();
-        //Add points below
-        ip.add(new Point2D.Double(20,10));
-        ip.add(new Point2D.Double(70,20));
-        ip.add(new Point2D.Double(0,40));
-        ip.add(new Point2D.Double(50,50));
-        ip.draw();
-        System.out.println("Perimeter: " + ip.perimeter());
-        System.out.println("Area: " + ip.area());
-    }
-
+    
     // public methods
     public void add(Point2D.Double aPoint) {
         myPolygon.add(aPoint);
+    }
+    public String getName(){
+        return "Atreyo";
     }
     public void draw() {
         myPaper = new SketchPad(500, 500);
@@ -41,6 +31,11 @@ public class IrregularPolygon {
         myPencil.move(first.x, first.y);
     }
     public double perimeter() {
+        if (myPolygon.size() == 2) {
+            Point2D.Double point01 = myPolygon.get(0);
+            Point2D.Double point02 = myPolygon.get(1);
+            return point01.distance(point02);
+        }
         for (int i = 0; i < myPolygon.size()-1; i++) {
             double p = 0;
             Point2D.Double point01 = myPolygon.get(i);
@@ -60,6 +55,9 @@ public class IrregularPolygon {
         return perimeter;
     }
     public double area() {
+        if (myPolygon.size() == 2) {
+            return 0;
+        }
         double area = 0.0;
         Point2D.Double first = myPolygon.get(0);
         Point2D.Double last = myPolygon.get(myPolygon.size()-1);
@@ -70,14 +68,5 @@ public class IrregularPolygon {
         }
         area += (last.x * first.y) - (last.y * first.x);
         return Math.abs(area/2.0);
-    }
-    
-    public /**boolean**/ void onePolygon() {
-        //do the lines intersect????
-        for(int i = 0; i < myPolygon.size()-1; i++) {
-            Point2D.Double point01 = myPolygon.get(i);
-            Point2D.Double point02 = myPolygon.get(i+1);
-            double slope = (point02.y - point01.y); //add more
-        }        
     }
 }
