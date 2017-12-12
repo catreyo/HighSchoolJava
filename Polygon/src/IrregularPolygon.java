@@ -17,7 +17,7 @@ public class IrregularPolygon {
         return "Atreyo";
     }
     public void draw() {
-        myPaper = new SketchPad(500, 500);
+        myPaper = new SketchPad(200, 200);
         myPencil = new DrawingTool(myPaper);
         myPencil.up();
         Point2D.Double first = myPolygon.get(0);
