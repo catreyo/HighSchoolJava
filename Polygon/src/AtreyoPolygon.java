@@ -3,7 +3,7 @@ import java.util.ArrayList; // for ArrayList
 import java.util.Iterator;
 import gpdraw.*;            // for DrawingTool
 
-public class IrregularPolygon {
+public class AtreyoPolygon implements Polygon {
     private ArrayList <Point2D.Double> myPolygon = new ArrayList<Point2D.Double>();
     private ArrayList<Double> peri = new ArrayList<Double>();
     private DrawingTool myPencil;
