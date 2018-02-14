@@ -1,12 +1,8 @@
-------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all he/she needs to know. The comments should usually include at least:
-------------------------------------------------------------------------
+PROJECT TITLE: TicTacToe
+PURPOSE OF PROJECT: Text based tictactoe game playable in the console.
+VERSION or DATE: Committed 2/13/18
+HOW TO START THIS PROJECT: Download, open IDE, enjoy.
+AUTHORS: Atreyo Chakrabarty
+USER INSTRUCTIONS: P self explanatory, think of it as a 2d array ;)
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+If you are copying this for a project give me credit if you can and tell me what grade you get haha. Best of luck.
