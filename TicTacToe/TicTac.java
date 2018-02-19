@@ -51,10 +51,22 @@ public class TicTac
         }
         System.out.println();
     }
+    public int promptUser() {
+    	int n = 0;
+    	while(true) {
+    		System.out.print("Value between 0 and " + (dimension*dimension-1) + ": ");
+	    	n = give.nextInt();
+	    	if(board.get(n) == "X" || board.get(n) == "X " || board.get(n) == " X " || board.get(n) == "O" || board.get(n) == "O " || board.get(n) == " O ") {
+	    		continue;
+	    	}
+	    	else {
+	    		break;
+	    	}
+    	}
+    	return n;
+    }
     
-    public void addUser(boolean xo) {
-    	System.out.print("Value between 0 and " + (dimension*dimension-1) + ": ");
-    	int n = give.nextInt();
+    public void add(boolean xo, int n) {
     	if(xo) {
     		switch(type) {
     			case 0:

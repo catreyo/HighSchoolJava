@@ -5,7 +5,9 @@ public class ToeBro
         toe.setDimension();
         toe.fill();
         toe.display();
-        toe.addUser(true);
-        toe.display();
+        while(true) {
+        	toe.add(true, toe.promptUser());
+        	toe.display();
+        }
     }
 }
