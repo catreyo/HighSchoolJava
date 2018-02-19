@@ -49,10 +49,36 @@ public class TicTac
         	System.out.format("[" + board.get(i) + "]");
         	counter++;
         }
+        System.out.println();
     }
     
-    public void addUser(boolean xy) {
-    	System.out.print("Value between 0 and " + (dimension-1));
-    	
+    public void addUser(boolean xo) {
+    	System.out.print("Value between 0 and " + (dimension*dimension-1) + ": ");
+    	int n = give.nextInt();
+    	if(xo) {
+    		switch(type) {
+    			case 0:
+    				board.set(n, "X");
+    				break;
+    			case 1:
+    				board.set(n, "X ");
+    				break;
+    			case 2:
+    				board.set(n, " X ");
+    				break;
+    		}
+    	}else {
+    		switch(type) {
+				case 0:
+					board.set(n, "O");
+					break;
+				case 1:
+					board.set(n, "O ");
+					break;
+				case 2:
+					board.set(n, " O ");
+					break;
+			}    		
+    	}
     }
 }
