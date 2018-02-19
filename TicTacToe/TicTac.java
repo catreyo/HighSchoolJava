@@ -51,6 +51,7 @@ public class TicTac
         }
         System.out.println();
     }
+    
     public int promptUser() {
     	int n = 0;
     	while(true) {
@@ -92,5 +93,9 @@ public class TicTac
 					break;
 			}    		
     	}
+    }
+    
+    public void aiPlay() {
+    	
     }
 }
