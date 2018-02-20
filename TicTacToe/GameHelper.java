@@ -11,6 +11,9 @@ public class GameHelper
     	dimension = give.nextInt();
     	b = new Board(dimension);
     	give.close();
+    	b.display();
+    	promptUser();
+    	b.display();
     }
     
     public static int promptUser() {
