@@ -15,26 +15,29 @@ public class GameHelper
         	dimension = give.nextInt();
     		b = new Board(dimension);
 	    	System.out.println("(1) Player VS Computer");
-	    	System.out.print("(2) Player VS Player");
+	    	System.out.println("(2) Player VS Player");
+	    	System.out.print("--> ");
 	    	int mode = Integer.parseInt(give.next());
 	    	b.display();
 	    	String winner = b.getWin();
 	    	while(winner.equals("") && !b.isBoardFull()) {
-	    		add(true, promptUser());
+	    		System.out.println("Player One:");
+	    	    add(true, promptUser());
 		    	winner = b.getWin();
+		    	b.display();
 		    	if(winner != "") {break;}
 	    		if(mode == 1) {
 	    			randPlay();
 			    	winner = b.getWin();
+			    	b.display();
 			    	if(winner != "") {break;}
 	    		}else if(mode == 2) {
-	    			add(false, promptUser());
+	    		    System.out.println("Player Two:");
+	    		    add(false, promptUser());
 			    	winner = b.getWin();
+			    	b.display();
 			    	if(winner != "") {break;}
-	    		}else {
-	    			return;
 	    		}
-		    	b.display();
 	    	}
 	    	if(winner.equals("x")) {System.out.println("X WINS");}
 	    	else if(winner.equals("o")) {System.out.println("O WINS");}
