@@ -27,7 +27,8 @@ public class GameHelper
 		    	b.display();
 		    	if(winner != "") {break;}
 	    		if(mode == 1) {
-	    			randPlay();
+	    			System.out.println("Computer:");
+	    		    randPlay();
 			    	winner = b.getWin();
 			    	b.display();
 			    	if(winner != "") {break;}
