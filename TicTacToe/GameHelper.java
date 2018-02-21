@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class GameHelper
@@ -7,13 +8,41 @@ public class GameHelper
     
     public static void main(String args[]) {
     	Scanner give = new Scanner(System.in);
-    	System.out.print("Dimension of array: ");
-    	dimension = give.nextInt();
-    	b = new Board(dimension);
-    	give.close();
-    	b.display();
-    	promptUser();
-    	b.display();
+    	String pAgain = "Y";
+    	while(pAgain.equals("Y")) {
+        	lastAdd = null;
+    		System.out.print("Dimension of array: ");
+        	dimension = give.nextInt();
+    		b = new Board(dimension);
+	    	System.out.println("(1) Player VS Computer");
+	    	System.out.print("(2) Player VS Player");
+	    	int mode = Integer.parseInt(give.next());
+	    	b.display();
+	    	String winner = b.getWin();
+	    	while(winner.equals("") && !b.isBoardFull()) {
+	    		add(true, promptUser());
+		    	winner = b.getWin();
+		    	if(winner != "") {break;}
+	    		if(mode == 1) {
+	    			randPlay();
+			    	winner = b.getWin();
+			    	if(winner != "") {break;}
+	    		}else if(mode == 2) {
+	    			add(false, promptUser());
+			    	winner = b.getWin();
+			    	if(winner != "") {break;}
+	    		}else {
+	    			return;
+	    		}
+		    	b.display();
+	    	}
+	    	if(winner.equals("x")) {System.out.println("X WINS");}
+	    	else if(winner.equals("o")) {System.out.println("O WINS");}
+	    	else if(winner.equals("") && b.isBoardFull()) {System.out.println("DRAW");}
+	    	System.out.print("Play Again? (Y/N)");
+	    	pAgain = give.next();
+    	}
+    	System.out.println("Have a great day!");
     }
     
     public static int promptUser() {
@@ -29,22 +58,33 @@ public class GameHelper
 	    		break;
 	    	}
     	}
-    	give.close();
     	return n;
     }
     
     public static void add(boolean xo, int n) {
     	if(xo) {
-    		b.getBoardList().get(n).setVal("X");
+    		b.getBoardList().get(n).setVal(" X ");
     	}else {
-    		b.getBoardList().get(n).setVal("O");
+    		b.getBoardList().get(n).setVal(" O ");
     	}
     	lastAdd = new Coordinate(n);
     }
     
-    public static void opponent() {
+    //Figure out exit criteria if all values of ArrayList are full
+    public static void randPlay() {
+    	Random rand =  new Random();
+    	while(!b.isBoardFull()) {
+    	    int randIndex = rand.nextInt(b.boardlist.size());
+    		if(!(b.getBoardList().get(randIndex).isFull())) {
+    			add(false, randIndex);
+    			break;
+    		}
+    	}
+    }
+    
+    /*public static void opponent() {
     	int lastX = lastAdd.getX();
     	int lastY = lastAdd.getY();
-    }
+    }*/
     
 }
