@@ -15,22 +15,22 @@ public class BusinessLogic
 		{
 			if(remainingMoves % 2 != 0)
 			{				
-				btnEmpty[currentMove].setText("X");
+				btnEmpty[currentMove].setText("L");
 			}
 			else
 			{
-				btnEmpty[currentMove].setText("O");
+				btnEmpty[currentMove].setText("W");
 			}
 		}
 		else
 		{
 			if(remainingMoves % 2 != 0)
 			{
-				btnEmpty[currentMove].setText("O");
+				btnEmpty[currentMove].setText("L");
 			}
 			else
 			{
-				btnEmpty[currentMove].setText("X");
+				btnEmpty[currentMove].setText("W");
 			}
 		}
 	}// End of GetMove
