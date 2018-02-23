@@ -8,7 +8,7 @@ import javax.swing.*;
 public class GUI extends JFrame implements ActionListener
 {
     // setting up ALL the variables
-    JFrame window = new JFrame("Thicc Tac Hoe");
+    JFrame window = new JFrame("Go die u hoe");
 
     JMenuBar mnuMain = new JMenuBar();
     JMenuItem   mnuNewGame = new JMenuItem("  New Game"), 
@@ -16,7 +16,7 @@ public class GUI extends JFrame implements ActionListener
     mnuStartingPlayer = new JMenuItem(" Starting Player"),
     mnuExit = new JMenuItem("    Quit");
 
-    JButton btnEmpty[] = new JButton[10];
+    JButton btnEmpty[] = new JButton[26];
 
     JPanel  pnlNewGame = new JPanel(),
     pnlNorth = new JPanel(),
@@ -94,9 +94,9 @@ public class GUI extends JFrame implements ActionListener
         mnuStartingPlayer.addActionListener(this);
 
         // setting up the playing field
-        pnlPlayingField.setLayout(new GridLayout(3, 3, 2, 2));
+        pnlPlayingField.setLayout(new GridLayout(5, 5, 2, 2));
         pnlPlayingField.setBackground(Color.black);
-        for(int x=1; x <= 9; ++x)   
+        for(int x=1; x <= 25; ++x)   
         {
             btnEmpty[x] = new JButton();
             btnEmpty[x].setBackground(new Color(81, 196, 23));
@@ -122,9 +122,9 @@ public class GUI extends JFrame implements ActionListener
         Object source = click.getSource();
 
         // check if a button was clicked on the gameboard
-        for(int currentMove=1; currentMove <= 9; ++currentMove) 
+        for(int currentMove=1; currentMove <= 25; ++currentMove) 
         {
-            if(source == btnEmpty[currentMove] && remainingMoves < 10)  
+            if(source == btnEmpty[currentMove] && remainingMoves < 26)  
             {
                 btnEmptyClicked = true;
                 BusinessLogic.GetMove(currentMove, remainingMoves, font, 
@@ -255,7 +255,7 @@ public class GUI extends JFrame implements ActionListener
 
         remainingMoves = 1;
 
-        for(int x=1; x <= 9; ++x)   
+        for(int x=1; x <= 25; ++x)   
         {
             btnEmpty[x].setText("");
             btnEmpty[x].setEnabled(setTableEnabled);
@@ -265,25 +265,7 @@ public class GUI extends JFrame implements ActionListener
     }
 
     private void CheckWin() 
-    { 
-    	for(int x = 1; x <= 7; x+=3) {
-    		if(btnEmpty[x].getText().equals("W") && btnEmpty[x+1].getText().equals("W") && btnEmpty[x+2].getText().equals("W")) {
-    			win = true;
-    		}else if(btnEmpty[x].getText().equals("L") && btnEmpty[x+1].getText().equals("L") && btnEmpty[x+2].getText().equals("L")) {
-    			win = true;
-    		}
-    	}
-    	for(int x = 0; x <= 2; x++)
-    		if(btnEmpty[1+x].getText().equals("W") && btnEmpty[4+x].getText().equals("W") && btnEmpty[7+x].getText().equals("W")) {
-    			win = true;
-    		}else if(btnEmpty[1+x].getText().equals("L") && btnEmpty[4+x].getText().equals("L") && btnEmpty[7+x].getText().equals("L")) {
-    			win = true;
-    	}
-    	if(btnEmpty[1].getText().equals("W") && btnEmpty[5].getText().equals("W") && btnEmpty[9].getText().equals("W")) {
-			win = true;
-		}else if(btnEmpty[3].getText().equals("L") && btnEmpty[5].getText().equals("L") && btnEmpty[7].getText().equals("L")) {
-			win = true;
-		}
+    {   
+        
     }
-
 }	
