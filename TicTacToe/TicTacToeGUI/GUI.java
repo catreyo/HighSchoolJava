@@ -263,27 +263,82 @@ public class GUI extends JFrame implements ActionListener
 
         win = false;        
     }
+    private void wWinMessage() {
+        int option = JOptionPane.showConfirmDialog(null, "W Wins!", "New Game?" ,JOptionPane.YES_NO_OPTION);
+        if(option == JOptionPane.YES_OPTION)    
+        {
+        	System.out.println(startingPlayer);
+            BusinessLogic.ClearPanelSouth(pnlSouth,pnlTop,pnlNewGame,
+                pnlPlayingField,pnlBottom,radioPanel);
+        }
+        else
+        {
+            BusinessLogic.ShowGame(pnlSouth,pnlPlayingField);
+        }
+    }
+    private void lWinMessage() {
+        int option = JOptionPane.showConfirmDialog(null, "L Wins!", "New Game?" ,JOptionPane.YES_NO_OPTION);
+        if(option == JOptionPane.YES_OPTION)    
+        {
+        	System.out.println(startingPlayer);
+            BusinessLogic.ClearPanelSouth(pnlSouth,pnlTop,pnlNewGame,
+                pnlPlayingField,pnlBottom,radioPanel);
+        }
+        else
+        {
+            BusinessLogic.ShowGame(pnlSouth,pnlPlayingField);
+        }
+    }
+    private void dWinMessage() {
+        int option = JOptionPane.showConfirmDialog(null, "DRAW!", "New Game?" ,JOptionPane.YES_NO_OPTION);
+        if(option == JOptionPane.YES_OPTION)    
+        {
+        	System.out.println(startingPlayer);
+            BusinessLogic.ClearPanelSouth(pnlSouth,pnlTop,pnlNewGame,
+                pnlPlayingField,pnlBottom,radioPanel);
+        }
+        else
+        {
+            BusinessLogic.ShowGame(pnlSouth,pnlPlayingField);
+        }
+    }
+
 
     private void CheckWin() 
     { 
     	for(int x = 1; x <= 7; x+=3) {
     		if(btnEmpty[x].getText().equals("W") && btnEmpty[x+1].getText().equals("W") && btnEmpty[x+2].getText().equals("W")) {
-    			win = true;
+    			wWinMessage();
     		}else if(btnEmpty[x].getText().equals("L") && btnEmpty[x+1].getText().equals("L") && btnEmpty[x+2].getText().equals("L")) {
-    			win = true;
+                lWinMessage();
     		}
     	}
     	for(int x = 0; x <= 2; x++)
     		if(btnEmpty[1+x].getText().equals("W") && btnEmpty[4+x].getText().equals("W") && btnEmpty[7+x].getText().equals("W")) {
-    			win = true;
+                wWinMessage();
     		}else if(btnEmpty[1+x].getText().equals("L") && btnEmpty[4+x].getText().equals("L") && btnEmpty[7+x].getText().equals("L")) {
-    			win = true;
-    	}
+                lWinMessage();
+    		}
     	if(btnEmpty[1].getText().equals("W") && btnEmpty[5].getText().equals("W") && btnEmpty[9].getText().equals("W")) {
-			win = true;
+            wWinMessage();
+		}else if(btnEmpty[3].getText().equals("W") && btnEmpty[5].getText().equals("W") && btnEmpty[7].getText().equals("W")) {
+            lWinMessage();
+		}else if(btnEmpty[1].getText().equals("L") && btnEmpty[5].getText().equals("L") && btnEmpty[9].getText().equals("L")) {
+            wWinMessage();
 		}else if(btnEmpty[3].getText().equals("L") && btnEmpty[5].getText().equals("L") && btnEmpty[7].getText().equals("L")) {
-			win = true;
+            lWinMessage();
 		}
+    	int counter = 0;
+        for(int x=1; x <= 9; ++x)   
+        {
+            if(btnEmpty[x].getText() == "W" || btnEmpty[x].getText() == "L") {
+            	counter++;
+            }
+        }
+        if(counter == 9) {
+        	dWinMessage();
+        }
+
     }
 
 }	
