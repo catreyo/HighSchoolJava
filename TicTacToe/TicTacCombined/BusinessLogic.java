@@ -10,6 +10,7 @@ public class BusinessLogic
 			String startingPlayer)
 	{// gets the current move "X" or "O" for the user & displays to screen
 		btnEmpty[currentMove].setFont(font);
+		btnEmpty[currentMove].setForeground(Color.BLACK);
  
 		if(startingPlayer.equals("X"))
 		{
