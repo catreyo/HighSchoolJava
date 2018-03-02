@@ -6,6 +6,12 @@ import java.awt.*;
  
 public class BusinessLogic
 {
+	static Board b = null;
+	public static void setBoard(int n) {
+		GameHelper.dimension = n;
+		b = new Board(n);
+	}
+	//L = X and W = O
 	public static void GetMove(int currentMove, int remainingMoves, Font font, JButton btnEmpty[], 
 			String startingPlayer)
 	{// gets the current move "X" or "O" for the user & displays to screen
@@ -17,10 +23,12 @@ public class BusinessLogic
 			if(remainingMoves % 2 != 0)
 			{				
 				btnEmpty[currentMove].setText("L");
+				b.getBoardList().get(currentMove-1).setVal(" X ");
 			}
 			else
 			{
 				btnEmpty[currentMove].setText("W");
+				b.getBoardList().get(currentMove-1).setVal(" O ");
 			}
 		}
 		else
@@ -28,12 +36,15 @@ public class BusinessLogic
 			if(remainingMoves % 2 != 0)
 			{
 				btnEmpty[currentMove].setText("L");
+				b.getBoardList().get(currentMove-1).setVal(" X ");
 			}
 			else
 			{
 				btnEmpty[currentMove].setText("W");
+				b.getBoardList().get(currentMove-1).setVal(" O ");
 			}
 		}
+		GameHelper.lastAdd = new Coordinate(currentMove-1);
 	}// End of GetMove
 	
 	public static void ShowGame(JPanel pnlSouth, JPanel pnlPlayingField)

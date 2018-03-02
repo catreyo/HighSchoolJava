@@ -6,7 +6,7 @@ public class GameHelper
 	static Board b;
     static int dimension; static Coordinate lastAdd;
     
-    public static void main(String args[]) {
+/*    public static void main(String args[]) {
     	Scanner give = new Scanner(System.in);
     	String pAgain = "Y";
     	while(pAgain.equals("Y")) {
@@ -47,7 +47,7 @@ public class GameHelper
 	    	pAgain = give.next();
     	}
     	System.out.println("Have a great day!");
-    }
+    } */
     
     public static int promptUser() {
     	Scanner give = new Scanner(System.in);

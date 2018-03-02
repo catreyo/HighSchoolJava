@@ -55,6 +55,7 @@ public class GUI extends JFrame implements ActionListener
     public GUI() //This is the constructor
     {
     	letterFont();
+    	BusinessLogic.setBoard(dimension*dimension);
     	//Setting window properties:
         window.setSize(X, Y);
         window.setLocation(300, 180);
@@ -153,7 +154,10 @@ public class GUI extends JFrame implements ActionListener
         if(btnEmptyClicked) 
         {
             inGame = true;
-            CheckWin();
+            String winner = BusinessLogic.b.getWin();
+	    	if(winner.equals("x")) {lWinMessage();}
+	    	else if(winner.equals("o")) {wWinMessage();}
+	    	else if(winner.equals("") && BusinessLogic.b.isBoardFull()) {dWinMessage();}
             btnEmptyClicked = false;
         }
 
@@ -318,8 +322,8 @@ public class GUI extends JFrame implements ActionListener
     }
 
 
-    private void CheckWin() 
-    { 
+/*    private void CheckWin() 
+    { //old code for 3x3
     	for(int x = 1; x <= 7; x+=3) {
     		if(btnEmpty[x].getText().equals("W") && btnEmpty[x+1].getText().equals("W") && btnEmpty[x+2].getText().equals("W")) {
     			wWinMessage();
@@ -353,6 +357,6 @@ public class GUI extends JFrame implements ActionListener
         	dWinMessage();
         }
 
-    }
+    } */
 
 }	
