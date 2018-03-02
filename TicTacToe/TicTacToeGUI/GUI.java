@@ -8,7 +8,7 @@ import javax.swing.*;
 public class GUI extends JFrame implements ActionListener
 {
     // setting up ALL the variables
-    JFrame window = new JFrame("Thicc Tac Hoe");
+	JFrame window = new JFrame("Thicc Tac Hoe");
 
     JMenuBar mnuMain = new JMenuBar();
     JMenuItem   mnuNewGame = new JMenuItem("  New Game"), 
@@ -16,7 +16,10 @@ public class GUI extends JFrame implements ActionListener
     mnuStartingPlayer = new JMenuItem(" Starting Player"),
     mnuExit = new JMenuItem("    Quit");
 
-    JButton btnEmpty[] = new JButton[10];
+    String m = JOptionPane.showInputDialog("Size of board?");
+	private int dimension = Integer.parseInt(m);
+	
+    JButton btnEmpty[] = new JButton[(dimension*dimension)+1];
 
     JPanel  pnlNewGame = new JPanel(),
     pnlNorth = new JPanel(),
@@ -36,13 +39,23 @@ public class GUI extends JFrame implements ActionListener
     private boolean btnEmptyClicked = false;
     private boolean setTableEnabled = false;
     private String message;
-    private Font font = new Font("Rufscript", Font.BOLD, 100);
+    int size = 0;
     private int remainingMoves = 1;
+    private Font font;
+    public void letterFont() {
+	    if(dimension < 6) {
+	    	size = 100;
+	    }else {
+	    	size = 50;
+	    }
+	    font = new Font("Rufscript", Font.BOLD, size);
+    }
 
     //===============================  GUI  ========================================//
     public GUI() //This is the constructor
     {
-        //Setting window properties:
+    	letterFont();
+    	//Setting window properties:
         window.setSize(X, Y);
         window.setLocation(300, 180);
         window.setResizable(true);
@@ -67,6 +80,7 @@ public class GUI extends JFrame implements ActionListener
         pnlBottom.setBackground(new Color(color, color, color));
         radioPanel.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createEtchedBorder(), "Who Goes First?"));
+
 
         // adding menu items to menu bar
         mnuMain.add(mnuGameTitle);
@@ -94,12 +108,12 @@ public class GUI extends JFrame implements ActionListener
         mnuStartingPlayer.addActionListener(this);
 
         // setting up the playing field
-        pnlPlayingField.setLayout(new GridLayout(3, 3, 2, 2));
+        pnlPlayingField.setLayout(new GridLayout(dimension, dimension, 2, 2));
         pnlPlayingField.setBackground(Color.black);
-        for(int x=1; x <= 9; ++x)   
+        for(int x=1; x <= dimension*dimension; ++x)   
         {
             btnEmpty[x] = new JButton();
-            btnEmpty[x].setBackground(new Color(81, 196, 23));
+            btnEmpty[x].setBackground(new Color(240, 40, 40));
             btnEmpty[x].addActionListener(this);
             pnlPlayingField.add(btnEmpty[x]);
             btnEmpty[x].setEnabled(setTableEnabled);
@@ -122,9 +136,9 @@ public class GUI extends JFrame implements ActionListener
         Object source = click.getSource();
 
         // check if a button was clicked on the gameboard
-        for(int currentMove=1; currentMove <= 9; ++currentMove) 
+        for(int currentMove=1; currentMove <= dimension*dimension; ++currentMove) 
         {
-            if(source == btnEmpty[currentMove] && remainingMoves < 10)  
+            if(source == btnEmpty[currentMove] && remainingMoves < dimension*dimension+1)  
             {
                 btnEmptyClicked = true;
                 BusinessLogic.GetMove(currentMove, remainingMoves, font, 
@@ -255,7 +269,7 @@ public class GUI extends JFrame implements ActionListener
 
         remainingMoves = 1;
 
-        for(int x=1; x <= 9; ++x)   
+        for(int x=1; x <= dimension*dimension; ++x)   
         {
             btnEmpty[x].setText("");
             btnEmpty[x].setEnabled(setTableEnabled);
