@@ -55,7 +55,7 @@ public class GUI extends JFrame implements ActionListener
     public GUI() //This is the constructor
     {
     	letterFont();
-    	BusinessLogic.setBoard(dimension*dimension);
+    	BusinessLogic.setBoard(dimension);
     	//Setting window properties:
         window.setSize(X, Y);
         window.setLocation(300, 180);
@@ -151,7 +151,7 @@ public class GUI extends JFrame implements ActionListener
         }
 
         // if a button was clicked on the gameboard, check for a winner
-        if(btnEmptyClicked) 
+        if(btnEmptyClicked && BusinessLogic.b.getBoardList().get(0) != null) 
         {
             inGame = true;
             String winner = BusinessLogic.b.getWin();

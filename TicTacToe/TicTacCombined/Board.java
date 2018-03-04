@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Board {
-	ArrayList<Coordinate> boardlist = new ArrayList<Coordinate>();
+	private ArrayList<Coordinate> boardlist = new ArrayList<Coordinate>();
 	
 	public Board(int n) {
     	for(int i = 0; i < GameHelper.dimension*GameHelper.dimension; i++) {

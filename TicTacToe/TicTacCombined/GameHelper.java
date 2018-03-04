@@ -78,7 +78,7 @@ public class GameHelper
     public static void randPlay() {
     	Random rand =  new Random();
     	while(!b.isBoardFull()) {
-    	    int randIndex = rand.nextInt(b.boardlist.size());
+    	    int randIndex = rand.nextInt(b.getBoardList().size());
     		if(!(b.getBoardList().get(randIndex).isFull())) {
     			add(false, randIndex);
     			break;
