@@ -8,6 +8,13 @@ public class Board {
     		boardlist.add(i, new Coordinate(i));
     	}
 	}
+
+	public void resetBoard() {
+    	for(int i = 0; i < GameHelper.dimension*GameHelper.dimension; i++) {
+    		boardlist.set(i, new Coordinate(i));
+    	}
+	}
+	
 	
     public void display(){
         int counter = 0;

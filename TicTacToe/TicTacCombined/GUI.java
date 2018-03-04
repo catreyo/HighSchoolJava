@@ -293,6 +293,7 @@ public class GUI extends JFrame implements ActionListener
         {
             BusinessLogic.ShowGame(pnlSouth,pnlPlayingField);
         }
+        BusinessLogic.b.resetBoard();
     }
     private void lWinMessage() {
         int option = JOptionPane.showConfirmDialog(null, "L Wins!", "New Game?" ,JOptionPane.YES_NO_OPTION);
@@ -306,6 +307,7 @@ public class GUI extends JFrame implements ActionListener
         {
             BusinessLogic.ShowGame(pnlSouth,pnlPlayingField);
         }
+        BusinessLogic.b.resetBoard();
     }
     private void dWinMessage() {
         int option = JOptionPane.showConfirmDialog(null, "DRAW!", "New Game?" ,JOptionPane.YES_NO_OPTION);
@@ -319,6 +321,7 @@ public class GUI extends JFrame implements ActionListener
         {
             BusinessLogic.ShowGame(pnlSouth,pnlPlayingField);
         }
+        BusinessLogic.b.resetBoard();
     }
 
 
