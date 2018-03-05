@@ -34,12 +34,12 @@ public class BusinessLogic
 		else
 		{
 			if(remainingMoves % 2 != 0)
-			{
+			{				
 				btnEmpty[currentMove].setText("L");
 				b.getBoardList().get(currentMove-1).setVal(" X ");
 			}
 			else
-			{
+			{//this is gonna be the AI thing
 				btnEmpty[currentMove].setText("W");
 				b.getBoardList().get(currentMove-1).setVal(" O ");
 			}

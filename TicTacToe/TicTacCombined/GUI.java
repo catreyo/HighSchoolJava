@@ -13,7 +13,7 @@ public class GUI extends JFrame implements ActionListener
     JMenuBar mnuMain = new JMenuBar();
     JMenuItem   mnuNewGame = new JMenuItem("  New Game"), 
     mnuGameTitle = new JMenuItem("|Tic Tac Toe|  "),
-    mnuStartingPlayer = new JMenuItem(" Starting Player"),
+    mnuStartingPlayer = new JMenuItem(" Game Mode"),
     mnuExit = new JMenuItem("    Quit");
 
     String m = JOptionPane.showInputDialog("Size of board?");
@@ -29,8 +29,8 @@ public class GUI extends JFrame implements ActionListener
     pnlPlayingField = new JPanel();
     JPanel radioPanel = new JPanel();
 
-    private JRadioButton SelectX = new JRadioButton("User Plays X", false);
-    private  JRadioButton SelectO = new JRadioButton("User Plays O", false);
+    private JRadioButton SelectX = new JRadioButton("Player vs Player", false);
+    private  JRadioButton SelectO = new JRadioButton("Player vs Computer", false);
     private ButtonGroup radioGroup;
     private  String startingPlayer= "";
     final int X = 800, Y = 480, color = 190; // size of the game window
@@ -245,11 +245,11 @@ public class GUI extends JFrame implements ActionListener
         public void actionPerformed(ActionEvent event) 
         {
             JRadioButton theButton = (JRadioButton)event.getSource();
-            if(theButton.getText().equals("User Plays X")) 
+            if(theButton.getText().equals("Player vs Player")) 
             {
                 startingPlayer = "X";
             }
-            if(theButton.getText().equals("User Plays O"))
+            if(theButton.getText().equals("Player vs Computer"))
             {
                 startingPlayer = "O";
             }
