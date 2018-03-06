@@ -75,15 +75,15 @@ public class GameHelper
     }
     
     //Figure out exit criteria if all values of ArrayList are full
-    public static void randPlay() {
+    public static int randPlay() {
     	Random rand =  new Random();
     	while(!b.isBoardFull()) {
     	    int randIndex = rand.nextInt(b.getBoardList().size());
     		if(!(b.getBoardList().get(randIndex).isFull())) {
-    			add(false, randIndex);
-    			break;
+    			return randIndex;
     		}
     	}
+    	return -1;
     }
     
     /*public static void opponent() {

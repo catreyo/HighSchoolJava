@@ -16,7 +16,6 @@ public class BusinessLogic
 			String startingPlayer)
 	{// gets the current move "X" or "O" for the user & displays to screen
 		btnEmpty[currentMove].setFont(font);
-		btnEmpty[currentMove].setForeground(Color.BLACK);
  
 		if(startingPlayer.equals("X"))
 		{
@@ -33,15 +32,15 @@ public class BusinessLogic
 		}
 		else
 		{
-			if(remainingMoves % 2 != 0)
-			{				
-				btnEmpty[currentMove].setText("L");
-				b.getBoardList().get(currentMove-1).setVal(" X ");
-			}
-			else
-			{//this is gonna be the AI thing
-				btnEmpty[currentMove].setText("W");
-				b.getBoardList().get(currentMove-1).setVal(" O ");
+			btnEmpty[currentMove].setText("L");
+			b.getBoardList().get(currentMove-1).setVal(" X ");
+			GameHelper.lastAdd = new Coordinate(currentMove-1);
+			//this is gonna be the AI thing
+			if(remainingMoves <= GameHelper.dimension*GameHelper.dimension) {
+				int AImove = b.intelPlayer();
+				btnEmpty[AImove].setFont(font);
+				btnEmpty[AImove].setText("W");
+				b.getBoardList().get(AImove-1).setVal(" O ");
 			}
 		}
 		GameHelper.lastAdd = new Coordinate(currentMove-1);

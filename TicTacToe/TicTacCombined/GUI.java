@@ -324,9 +324,9 @@ public class GUI extends JFrame implements ActionListener
         BusinessLogic.b.resetBoard();
     }
 
-
+  //old code for 3x3
 /*    private void CheckWin() 
-    { //old code for 3x3
+    { 
     	for(int x = 1; x <= 7; x+=3) {
     		if(btnEmpty[x].getText().equals("W") && btnEmpty[x+1].getText().equals("W") && btnEmpty[x+2].getText().equals("W")) {
     			wWinMessage();
