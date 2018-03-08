@@ -23,11 +23,17 @@ public class BusinessLogic
 			{				
 				btnEmpty[currentMove].setText("L");
 				b.getBoardList().get(currentMove-1).setVal(" X ");
+				GameHelper.lastAdd = new Coordinate(currentMove-1);
+				b.display();
+				System.out.println();
 			}
 			else
 			{
 				btnEmpty[currentMove].setText("W");
 				b.getBoardList().get(currentMove-1).setVal(" O ");
+				GameHelper.lastAdd = new Coordinate(currentMove-1);
+				b.display();
+				System.out.println();
 			}
 		}
 		else
@@ -35,18 +41,51 @@ public class BusinessLogic
 			btnEmpty[currentMove].setText("L");
 			b.getBoardList().get(currentMove-1).setVal(" X ");
 			GameHelper.lastAdd = new Coordinate(currentMove-1);
+			b.display();
+			System.out.println();
+            String winner = BusinessLogic.b.getWin();
+	    	if(winner.equals("x")) {lWinMessage();}
+	    	else if(winner.equals("o")) {wWinMessage();}
+	    	else if(winner.equals("") && BusinessLogic.b.isBoardFull()) {dWinMessage();}
 			//this is gonna be the AI thing
-			if(remainingMoves <= GameHelper.dimension*GameHelper.dimension) {
-				int AImove = b.intelPlayer();
-				btnEmpty[AImove].setFont(font);
-				btnEmpty[AImove].setText("W");
-				b.getBoardList().get(AImove-1).setVal(" O ");
+			int AImove = -1;
+			int errorCount = 0;
+			while(true) {
+				AImove = b.intelPlayer();
+				if(btnEmpty[AImove].getText() == "") {
+					btnEmpty[AImove].setFont(font);
+					btnEmpty[AImove].setText("W");
+					b.getBoardList().get(AImove-1).setVal(" O ");
+					break;
+				}
+				errorCount++;
+				if(errorCount > GameHelper.dimension*GameHelper.dimension) {
+					AImove = b.randomPlay();
+					if(b.getBoardList().get(AImove).getVal() == "") {
+						btnEmpty[AImove].setFont(font);
+						btnEmpty[AImove].setText("W");
+						b.getBoardList().get(AImove-1).setVal(" O ");
+						break;
+					}
+				}
 			}
+			GameHelper.lastAdd = new Coordinate(AImove-1);
+			b.display();
+			System.out.println();
 		}
-		GameHelper.lastAdd = new Coordinate(currentMove-1);
 	}// End of GetMove
 	
-	public static void ShowGame(JPanel pnlSouth, JPanel pnlPlayingField)
+    public static void wWinMessage() {
+        JOptionPane.showMessageDialog(null, "W Wins");
+    }
+    public static void lWinMessage() {
+        JOptionPane.showMessageDialog(null, "L Wins");
+    }
+    public static void dWinMessage() {
+        JOptionPane.showMessageDialog(null, "DRAW!");
+    }
+
+    public static void ShowGame(JPanel pnlSouth, JPanel pnlPlayingField)
 	{// shows the Playing Field
 		pnlSouth.setLayout(new BorderLayout());
 		pnlSouth.add(pnlPlayingField, BorderLayout.CENTER);

@@ -155,9 +155,15 @@ public class GUI extends JFrame implements ActionListener
         {
             inGame = true;
             String winner = BusinessLogic.b.getWin();
-	    	if(winner.equals("x")) {lWinMessage();}
-	    	else if(winner.equals("o")) {wWinMessage();}
-	    	else if(winner.equals("") && BusinessLogic.b.isBoardFull()) {dWinMessage();}
+	    	if(winner.equals("x")) {BusinessLogic.lWinMessage();
+            	BusinessLogic.ClearPanelSouth(pnlSouth,pnlTop,pnlNewGame,
+            			pnlPlayingField,pnlBottom,radioPanel);}
+	    	else if(winner.equals("o")) {BusinessLogic.wWinMessage();
+                BusinessLogic.ClearPanelSouth(pnlSouth,pnlTop,pnlNewGame,
+                    pnlPlayingField,pnlBottom,radioPanel);}
+	    	else if(winner.equals("") && BusinessLogic.b.isBoardFull()) {BusinessLogic.dWinMessage();
+                BusinessLogic.ClearPanelSouth(pnlSouth,pnlTop,pnlNewGame,
+                    pnlPlayingField,pnlBottom,radioPanel);}
             btnEmptyClicked = false;
         }
 
@@ -278,50 +284,9 @@ public class GUI extends JFrame implements ActionListener
             btnEmpty[x].setText("");
             btnEmpty[x].setEnabled(setTableEnabled);
         }
+        BusinessLogic.b.resetBoard();
 
         win = false;        
-    }
-    private void wWinMessage() {
-        int option = JOptionPane.showConfirmDialog(null, "W Wins!", "New Game?" ,JOptionPane.YES_NO_OPTION);
-        if(option == JOptionPane.YES_OPTION)    
-        {
-        	System.out.println(startingPlayer);
-            BusinessLogic.ClearPanelSouth(pnlSouth,pnlTop,pnlNewGame,
-                pnlPlayingField,pnlBottom,radioPanel);
-        }
-        else
-        {
-            BusinessLogic.ShowGame(pnlSouth,pnlPlayingField);
-        }
-        BusinessLogic.b.resetBoard();
-    }
-    private void lWinMessage() {
-        int option = JOptionPane.showConfirmDialog(null, "L Wins!", "New Game?" ,JOptionPane.YES_NO_OPTION);
-        if(option == JOptionPane.YES_OPTION)    
-        {
-        	System.out.println(startingPlayer);
-            BusinessLogic.ClearPanelSouth(pnlSouth,pnlTop,pnlNewGame,
-                pnlPlayingField,pnlBottom,radioPanel);
-        }
-        else
-        {
-            BusinessLogic.ShowGame(pnlSouth,pnlPlayingField);
-        }
-        BusinessLogic.b.resetBoard();
-    }
-    private void dWinMessage() {
-        int option = JOptionPane.showConfirmDialog(null, "DRAW!", "New Game?" ,JOptionPane.YES_NO_OPTION);
-        if(option == JOptionPane.YES_OPTION)    
-        {
-        	System.out.println(startingPlayer);
-            BusinessLogic.ClearPanelSouth(pnlSouth,pnlTop,pnlNewGame,
-                pnlPlayingField,pnlBottom,radioPanel);
-        }
-        else
-        {
-            BusinessLogic.ShowGame(pnlSouth,pnlPlayingField);
-        }
-        BusinessLogic.b.resetBoard();
     }
 
   //old code for 3x3

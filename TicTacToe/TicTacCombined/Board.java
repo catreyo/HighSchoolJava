@@ -199,7 +199,9 @@ public class Board {
 		if(diagTwoCountX == GameHelper.dimension-1) {
 			return dBlockSpace2+1;
 		}
-			
+		return randomPlay();
+	}
+	public int randomPlay() {
 		//Otherwise go random (for now)
     	Random rand =  new Random();
     	while(!isBoardFull()) {
@@ -209,7 +211,6 @@ public class Board {
     		}
     	}
     	return -1;
-
 	}
 
 }
