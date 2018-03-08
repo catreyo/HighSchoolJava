@@ -5,5 +5,5 @@ comment0.text=\ \ \ \ public\ static\ void\ main(String\ args[])\ {\r\n\ \ \ \ \
 comment1.params=xo\ n
 comment1.target=void\ add(boolean,\ int)
 comment2.params=
-comment2.target=void\ randPlay()
+comment2.target=int\ randPlay()
 numComments=3

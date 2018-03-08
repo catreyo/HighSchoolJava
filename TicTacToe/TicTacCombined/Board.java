@@ -115,6 +115,7 @@ public class Board {
 				space = i;
 			}
 		}
+		System.out.println("Count WIN" + horiCountO + " " + GameHelper.lastAdd.getX() + " Space: " + space);
 		if(horiCountO == GameHelper.dimension-1) {
 			return space+1;
 		}
@@ -163,6 +164,7 @@ public class Board {
 				blockSpace = i;
 			}
 		}
+		System.out.println("Count CLOCK" + horiCountX + " " + GameHelper.lastAdd.getX() + " Space: " + blockSpace);
 		if(horiCountX == GameHelper.dimension-1) {
 			return blockSpace+1;
 		}
