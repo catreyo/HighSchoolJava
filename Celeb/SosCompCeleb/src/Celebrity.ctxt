@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=f\ name
+comment0.target=Celebrity(java.io.File,\ java.lang.String)
+comment1.params=
+comment1.target=java.io.File\ getFile()
+comment2.params=
+comment2.target=java.lang.String\ getName()
+numComments=3
