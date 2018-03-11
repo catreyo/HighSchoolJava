@@ -43,33 +43,20 @@ public class BusinessLogic
             GameHelper.lastAdd = new Coordinate(currentMove-1);
             b.display();
             System.out.println();
-            String winner = b.getWin();
-            if(winner.equals("x")) {lWinMessage();}
-            else if(winner.equals("o")) {wWinMessage();}
-            else if(winner.equals("") && BusinessLogic.b.isBoardFull()) {dWinMessage();}
+//          String winner = b.getWin();
+//          if(winner.equals("x")) {lWinMessage();}
+//          else if(winner.equals("o")) {wWinMessage();}
+//          else if(winner.equals("") && BusinessLogic.b.isBoardFull()) {dWinMessage();}
             //this is gonna be the AI thing
             int AImove = -1;
-            int errorCount = 0;
-            while(true) {
-                AImove = b.intelPlayer();
-                if(btnEmpty[AImove].getText() == "") {
-                    btnEmpty[AImove].setFont(font);
-                    btnEmpty[AImove].setText("O");
-                    btnEmpty[AImove].setEnabled(false);
-                    b.getBoardList().get(AImove-1).setVal(" O ");
-                    break;
-                }
-                errorCount++;
-                if(errorCount > GameHelper.dimension*GameHelper.dimension) {
-                    AImove = b.randomPlay();
-                    if(b.getBoardList().get(AImove).getVal() == "") {
-                        btnEmpty[AImove].setFont(font);
-                        btnEmpty[AImove].setText("O");
-                        btnEmpty[AImove].setEnabled(false);
-                        b.getBoardList().get(AImove-1).setVal(" O ");
-                        break;
-                    }
-                }
+            AImove = b.intelPlayer();
+            if(btnEmpty[AImove].getText() == "") {
+            	btnEmpty[AImove].setFont(font);
+                btnEmpty[AImove].setText("O");
+                btnEmpty[AImove].setEnabled(false);
+                b.getBoardList().get(AImove-1).setVal(" O ");
+            }else {
+            	System.out.print("UR AI IS BROKEN AF");
             }
             GameHelper.lastAdd = new Coordinate(AImove-1);
             b.display();

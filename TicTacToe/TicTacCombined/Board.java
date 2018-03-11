@@ -106,99 +106,125 @@ public class Board {
 		
 		//Check if possible to win:
 		int horiCountO = 0;
+		int horiXcheck = 0;
 		int space = 0;
 		for(int i = 0; i < GameHelper.dimension; i++) {
 			if(getCoordXY(GameHelper.lastAdd.getX(), i).getVal() == " O "){
 				horiCountO++;
 			}
+			else if(getCoordXY(GameHelper.lastAdd.getX(), i).getVal() == " X "){
+				horiXcheck++;
+			}
 			else if(getCoordXY(GameHelper.lastAdd.getX(), i).getVal() == ""){
 				space = i;
 			}
 		}
-		System.out.println("Count WIN" + horiCountO + " " + GameHelper.lastAdd.getX() + " Space: " + space);
-		if(horiCountO == GameHelper.dimension-1) {
+		//System.out.println("Count WIN" + horiCountO + " " + GameHelper.lastAdd.getX() + " Space: " + space);
+		if(horiCountO == GameHelper.dimension-1  && horiXcheck == 0) {
 			return space+1;
 		}
 		space = 0;
 		int vertCountO = 0;
+		int vertXcheck = 0;
 		for(int i = 0; i < GameHelper.dimension; i++) {
 			if(getCoordXY(i, GameHelper.lastAdd.getY()).getVal() == " O ") {
 				vertCountO++;
-			}else if(getCoordXY(i, GameHelper.lastAdd.getY()).getVal() == "") {
+			}
+			else if(getCoordXY(GameHelper.lastAdd.getY(), i).getVal() == " X "){
+				vertXcheck++;
+			}
+			else if(getCoordXY(i, GameHelper.lastAdd.getY()).getVal() == "") {
 				space = i;
 			}
 		}
-		if(vertCountO == GameHelper.dimension-1) {
+		if(vertCountO == GameHelper.dimension-1 && vertXcheck == 0) {
 			return space+1;
 		}
 		int dSpace1 = 0; int dSpace2 = 0;
-		int diagOneCountO = 0;
-		int diagTwoCountO = 0;
+		int diagOneCountO = 0; int d1Xcheck = 0;
+		int diagTwoCountO = 0; int d2Xcheck = 0;
 		for(int i = 0; i < GameHelper.dimension; i++) {
 			if(getCoordXY(i, i).getVal()==" O "){
 				diagOneCountO++;
-			}else if(getCoordXY(i, i).getVal()==""){
+			}else if(getCoordXY(i, i).getVal()==" X "){
+				d1Xcheck++;
+			}
+			else if(getCoordXY(i, i).getVal()==""){
 				dSpace1 = i;
 			}
 			if(getCoordXY((GameHelper.dimension-1) - i, i).getVal()==" O "){
 				diagTwoCountO++;
-			}else if(getCoordXY((GameHelper.dimension-1) - i, i).getVal()==""){
+			}else if(getCoordXY((GameHelper.dimension-1) - i, i).getVal()==" X "){
+				 d2Xcheck++;
+			}
+			else if(getCoordXY((GameHelper.dimension-1) - i, i).getVal()==""){
 				dSpace2 = i;
 			}
 		}
-		if(diagOneCountO == GameHelper.dimension-1) {
+		if(diagOneCountO == GameHelper.dimension-1 && d1Xcheck == 0) {
 			return dSpace1+1;
 		}
-		if(diagTwoCountO == GameHelper.dimension-1) {
+		if(diagTwoCountO == GameHelper.dimension-1 && d2Xcheck == 0) {
 			return dSpace2+1;
 		}
 		
 		//Check if possible to block
 		int horiCountX = 0;
 		int blockSpace = 0;
+		int horiOcheck = 0;
 		for(int i = 0; i < GameHelper.dimension; i++) {
 			if(getCoordXY(GameHelper.lastAdd.getX(), i).getVal() == " X "){
 				horiCountX++;
 			}
+			else if(getCoordXY(GameHelper.lastAdd.getX(), i).getVal() == " O "){
+				horiOcheck++;
+			}
 			else if(getCoordXY(GameHelper.lastAdd.getX(), i).getVal() == ""){
-				blockSpace = i;
+				blockSpace = getCoordXY(GameHelper.lastAdd.getX(), i).getIndex();
 			}
 		}
-		System.out.println("Count CLOCK" + horiCountX + " " + GameHelper.lastAdd.getX() + " Space: " + blockSpace);
-		if(horiCountX == GameHelper.dimension-1) {
+		//System.out.println("Count BLOCK " + horiCountX + " " + GameHelper.lastAdd.getX() + " Space: " + blockSpace);
+		if(horiCountX == GameHelper.dimension-1 && horiOcheck == 0) {
 			return blockSpace+1;
 		}
 		blockSpace = 0;
 		int vertCountX = 0;
+		int vertOcheck = 0;
 		for(int i = 0; i < GameHelper.dimension; i++) {
 			if(getCoordXY(i, GameHelper.lastAdd.getY()).getVal() == " X ") {
 				vertCountX++;
+			}else if(getCoordXY(GameHelper.lastAdd.getY(), i).getVal() == " O "){
+				vertOcheck++;
 			}else if(getCoordXY(i, GameHelper.lastAdd.getY()).getVal() == "") {
-				blockSpace = i;
+				blockSpace = getCoordXY(i, GameHelper.lastAdd.getY()).getIndex();
 			}
 		}
-		if(vertCountX == GameHelper.dimension-1) {
+		if(vertCountX == GameHelper.dimension-1 && vertOcheck == 0) {
 			return blockSpace+1;
 		}
 		int dBlockSpace1 = 0; int dBlockSpace2 = 0;
-		int diagOneCountX = 0;
-		int diagTwoCountX = 0;
+		int diagOneCountX = 0; int d1Ocheck = 0;
+		int diagTwoCountX = 0; int d2Ocheck = 0;
 		for(int i = 0; i < GameHelper.dimension; i++) {
 			if(getCoordXY(i, i).getVal()==" X "){
 				diagOneCountX++;
+			}else if(getCoordXY(i, i).getVal()==" O "){
+				d1Ocheck++;
 			}else if(getCoordXY(i, i).getVal()==""){
-				dBlockSpace1 = i;
+				dBlockSpace1 = getCoordXY(i, i).getIndex();
 			}
 			if(getCoordXY((GameHelper.dimension-1) - i, i).getVal()==" X "){
 				diagTwoCountX++;
+			}else if(getCoordXY((GameHelper.dimension-1) - i, i).getVal()==" O "){
+				 d2Ocheck++;
 			}else if(getCoordXY((GameHelper.dimension-1) - i, i).getVal()==""){
-				dBlockSpace2 = i;
+				dBlockSpace2 = getCoordXY((GameHelper.dimension-1) - i, i).getIndex();
 			}
 		}
-		if(diagOneCountX == GameHelper.dimension-1) {
+		if(diagOneCountX == GameHelper.dimension-1 && d1Ocheck == 0) {
 			return dBlockSpace1+1;
 		}
-		if(diagTwoCountX == GameHelper.dimension-1) {
+		if(diagTwoCountX == GameHelper.dimension-1 && d2Ocheck == 0) {
 			return dBlockSpace2+1;
 		}
 		return randomPlay();
