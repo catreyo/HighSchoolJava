@@ -43,10 +43,12 @@ public class BusinessLogic
             GameHelper.lastAdd = new Coordinate(currentMove-1);
             b.display();
             System.out.println();
-//          String winner = b.getWin();
-//          if(winner.equals("x")) {lWinMessage();}
-//          else if(winner.equals("o")) {wWinMessage();}
-//          else if(winner.equals("") && BusinessLogic.b.isBoardFull()) {dWinMessage();}
+            /*//This is obsolete code because the user will never will.
+            String winner = b.getWin();
+            if(winner.equals("x")) {lWinMessage();}
+            else if(winner.equals("o")) {wWinMessage();}
+            else if(winner.equals("") && BusinessLogic.b.isBoardFull()) {dWinMessage();}
+            */
             //this is gonna be the AI thing
             int AImove = -1;
             AImove = b.intelPlayer();
@@ -65,10 +67,10 @@ public class BusinessLogic
     }// End of GetMove
     
     public static void wWinMessage() {
-        JOptionPane.showMessageDialog(null, "W Wins");
+        JOptionPane.showMessageDialog(null, "X Wins");
     }
     public static void lWinMessage() {
-        JOptionPane.showMessageDialog(null, "L Wins");
+        JOptionPane.showMessageDialog(null, "O Wins");
     }
     public static void dWinMessage() {
         JOptionPane.showMessageDialog(null, "DRAW!");

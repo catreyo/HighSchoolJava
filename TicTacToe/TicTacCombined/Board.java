@@ -119,7 +119,6 @@ public class Board {
 				space = i;
 			}
 		}
-		//System.out.println("Count WIN" + horiCountO + " " + GameHelper.lastAdd.getX() + " Space: " + space);
 		if(horiCountO == GameHelper.dimension-1  && horiXcheck == 0) {
 			return space+1;
 		}
@@ -183,7 +182,6 @@ public class Board {
 				blockSpace = getCoordXY(GameHelper.lastAdd.getX(), i).getIndex();
 			}
 		}
-		//System.out.println("Count BLOCK " + horiCountX + " " + GameHelper.lastAdd.getX() + " Space: " + blockSpace);
 		if(horiCountX == GameHelper.dimension-1 && horiOcheck == 0) {
 			return blockSpace+1;
 		}
