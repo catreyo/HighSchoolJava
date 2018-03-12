@@ -25,15 +25,15 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 public class recognizeTest {
-	
-	public double runAPI(File x, File y) throws Exception{
-		
-		Gson gson = new Gson();
+    
+    public double runAPI(File x, File y) throws Exception{
+        
+        Gson gson = new Gson();
         File file = x;
         File file2 = y;
-		byte[] buff = getBytesFromFile(file);
-		byte[] buff2 = getBytesFromFile(file2);
-		String url = "https://api-us.faceplusplus.com/facepp/v3/compare";
+        byte[] buff = getBytesFromFile(file);
+        byte[] buff2 = getBytesFromFile(file2);
+        String url = "https://api-us.faceplusplus.com/facepp/v3/compare";
         HashMap<String, String> map = new HashMap<>();
         HashMap<String, byte[]> byteMap = new HashMap<>();
         map.put("api_key", "BK-Nzli0d-vrQVT-4kaoVReUjsT1HADj");
@@ -48,12 +48,12 @@ public class recognizeTest {
             System.out.println(myMap.get("confidence") + "...");
             return myMap.get("confidence");
         }catch (Exception e) {
-        	e.printStackTrace();
-        	return 0.0;
-		}
-	}
-	
-	private final static int CONNECT_TIME_OUT = 30000;
+            e.printStackTrace();
+            return 0.0;
+        }
+    }
+    
+    private final static int CONNECT_TIME_OUT = 30000;
     private final static int READ_OUT_TIME = 50000;
     private static String boundaryString = getBoundary();
     protected static byte[] post(String url, HashMap<String, String> map, HashMap<String, byte[]> fileMap) throws Exception {
@@ -154,7 +154,6 @@ public class recognizeTest {
 
         JFrame frame=new JFrame();
 
-        JLabel label1 = new JLabel(name);
         Image first = ImageIO.read(URL);
         Image img = first.getScaledInstance(500, 500,  java.awt.Image.SCALE_SMOOTH);
         ImageIcon image = new ImageIcon(img);
@@ -164,6 +163,16 @@ public class recognizeTest {
         frame.setLayout(new FlowLayout());
         frame.add(imageLabel);
  
+        Image second = ImageIO.read(User);
+        Image img2 = second.getScaledInstance(500, 500,  java.awt.Image.SCALE_SMOOTH);
+        ImageIcon image2 = new ImageIcon(img2);
+        JLabel imageLabel2 = new JLabel(image2);
+        imageLabel2.setBounds(40, 10, 350, 400);
+        imageLabel2.setVisible(true);
+        frame.setLayout(new FlowLayout());
+        frame.add(imageLabel2);
+
+        JLabel label1 = new JLabel(name);
         frame.add(label1);
         frame.setExtendedState( frame.getExtendedState()|JFrame.MAXIMIZED_BOTH );
         frame.setVisible(true);
