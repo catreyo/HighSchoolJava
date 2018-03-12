@@ -155,10 +155,10 @@ public class GUI extends JFrame implements ActionListener
         {
             inGame = true;
             String winner = BusinessLogic.b.getWin();
-	    	if(winner.equals("x")) {BusinessLogic.lWinMessage();
+	    	if(winner.equals("x")) {BusinessLogic.wWinMessage();
             	BusinessLogic.ClearPanelSouth(pnlSouth,pnlTop,pnlNewGame,
             			pnlPlayingField,pnlBottom,radioPanel);}
-	    	else if(winner.equals("o")) {BusinessLogic.wWinMessage();
+	    	else if(winner.equals("o")) {BusinessLogic.lWinMessage();
                 BusinessLogic.ClearPanelSouth(pnlSouth,pnlTop,pnlNewGame,
                     pnlPlayingField,pnlBottom,radioPanel);}
 	    	else if(winner.equals("") && BusinessLogic.b.isBoardFull()) {BusinessLogic.dWinMessage();
