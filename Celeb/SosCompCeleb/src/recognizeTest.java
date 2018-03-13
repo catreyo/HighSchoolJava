@@ -15,11 +15,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
-import javax.imageio.ImageIO;
 import javax.net.ssl.SSLException;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -150,33 +147,4 @@ public class recognizeTest {
         return null;
     }
     
-    public void displayImage(File URL, File User, String name) throws IOException {
-
-        JFrame frame=new JFrame();
-
-        Image first = ImageIO.read(URL);
-        Image img = first.getScaledInstance(500, 500,  java.awt.Image.SCALE_SMOOTH);
-        ImageIcon image = new ImageIcon(img);
-        JLabel imageLabel = new JLabel(image);
-        imageLabel.setBounds(10, 10, 350, 400);
-        imageLabel.setVisible(true);
-        frame.setLayout(new FlowLayout());
-        frame.add(imageLabel);
- 
-        Image second = ImageIO.read(User);
-        Image img2 = second.getScaledInstance(500, 500,  java.awt.Image.SCALE_SMOOTH);
-        ImageIcon image2 = new ImageIcon(img2);
-        JLabel imageLabel2 = new JLabel(image2);
-        imageLabel2.setBounds(40, 10, 350, 400);
-        imageLabel2.setVisible(true);
-        frame.setLayout(new FlowLayout());
-        frame.add(imageLabel2);
-
-        JLabel label1 = new JLabel(name);
-        frame.add(label1);
-        frame.setExtendedState( frame.getExtendedState()|JFrame.MAXIMIZED_BOTH );
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-    }    
 }

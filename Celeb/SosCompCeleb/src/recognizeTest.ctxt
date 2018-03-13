@@ -7,6 +7,4 @@ comment2.params=value
 comment2.target=java.lang.String\ encode(java.lang.String)
 comment3.params=f
 comment3.target=byte[]\ getBytesFromFile(java.io.File)
-comment4.params=URL\ User\ name
-comment4.target=void\ displayImage(java.io.File,\ java.io.File,\ java.lang.String)
-numComments=5
+numComments=4
