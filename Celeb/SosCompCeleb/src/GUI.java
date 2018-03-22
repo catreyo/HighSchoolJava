@@ -8,17 +8,16 @@ import javax.swing.*;
 public class GUI extends JFrame implements ActionListener
 {
     // setting up ALL the variables
-	JFrame window = new JFrame("Thicc Tac Hoe");
-
+    JFrame window = new JFrame("Wait time!");
     JMenuBar mnuMain = new JMenuBar();
     JMenuItem   mnuNewGame = new JMenuItem("  New Game"), 
     mnuGameTitle = new JMenuItem("|Tic Tac Toe|  "),
     mnuStartingPlayer = new JMenuItem(" Game Mode"),
     mnuExit = new JMenuItem("    Quit");
 
-    String m = JOptionPane.showInputDialog("Size of board?");
-	private int dimension = Integer.parseInt(m);
-	
+    String m = JOptionPane.showInputDialog("PLAY TICTACTOE While you wait! Board size:");
+    private int dimension = Integer.parseInt(m);
+    
     JButton btnEmpty[] = new JButton[(dimension*dimension)+1];
 
     JPanel  pnlNewGame = new JPanel(),
@@ -28,6 +27,7 @@ public class GUI extends JFrame implements ActionListener
     pnlBottom = new JPanel(),
     pnlPlayingField = new JPanel();
     JPanel radioPanel = new JPanel();
+    
 
     private JRadioButton SelectX = new JRadioButton("Player vs Player", false);
     private  JRadioButton SelectO = new JRadioButton("Player vs Computer", false);
@@ -43,25 +43,25 @@ public class GUI extends JFrame implements ActionListener
     private int remainingMoves = 1;
     private Font font;
     public void letterFont() {
-	    if(dimension < 6) {
-	    	size = 100;
-	    }else {
-	    	size = 50;
-	    }
-	    font = new Font("Rufscript", Font.BOLD, size);
+        if(dimension < 6) {
+            size = 100;
+        }else {
+            size = 50;
+        }
+        font = new Font("Rufscript", Font.BOLD, size);
     }
 
     //===============================  GUI  ========================================//
     public GUI() //This is the constructor
     {
-    	letterFont();
-    	BusinessLogic.setBoard(dimension);
-    	//Setting window properties:
+        letterFont();
+        BusinessLogic.setBoard(dimension);
+        //Setting window properties:
         window.setSize(X, Y);
         window.setLocation(300, 180);
         window.setResizable(true);
         window.setLayout(new BorderLayout());
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);  
 
         //------------  Sets up Panels and text fields  ------------------------//
         // setting Panel layouts and properties
@@ -155,13 +155,13 @@ public class GUI extends JFrame implements ActionListener
         {
             inGame = true;
             String winner = BusinessLogic.b.getWin();
-	    	if(winner.equals("x")) {BusinessLogic.wWinMessage();
-            	BusinessLogic.ClearPanelSouth(pnlSouth,pnlTop,pnlNewGame,
-            			pnlPlayingField,pnlBottom,radioPanel);}
-	    	else if(winner.equals("o")) {BusinessLogic.lWinMessage();
+            if(winner.equals("x")) {BusinessLogic.wWinMessage();
+                BusinessLogic.ClearPanelSouth(pnlSouth,pnlTop,pnlNewGame,
+                        pnlPlayingField,pnlBottom,radioPanel);}
+            else if(winner.equals("o")) {BusinessLogic.lWinMessage();
                 BusinessLogic.ClearPanelSouth(pnlSouth,pnlTop,pnlNewGame,
                     pnlPlayingField,pnlBottom,radioPanel);}
-	    	else if(winner.equals("") && BusinessLogic.b.isBoardFull()) {BusinessLogic.dWinMessage();
+            else if(winner.equals("") && BusinessLogic.b.isBoardFull()) {BusinessLogic.dWinMessage();
                 BusinessLogic.ClearPanelSouth(pnlSouth,pnlTop,pnlNewGame,
                     pnlPlayingField,pnlBottom,radioPanel);}
             btnEmptyClicked = false;
@@ -288,41 +288,45 @@ public class GUI extends JFrame implements ActionListener
 
         win = false;        
     }
+    
+    public void close(){
+        window.dispose();
+    }
 
   //old code for 3x3
 /*    private void CheckWin() 
     { 
-    	for(int x = 1; x <= 7; x+=3) {
-    		if(btnEmpty[x].getText().equals("W") && btnEmpty[x+1].getText().equals("W") && btnEmpty[x+2].getText().equals("W")) {
-    			wWinMessage();
-    		}else if(btnEmpty[x].getText().equals("L") && btnEmpty[x+1].getText().equals("L") && btnEmpty[x+2].getText().equals("L")) {
-                lWinMessage();
-    		}
-    	}
-    	for(int x = 0; x <= 2; x++)
-    		if(btnEmpty[1+x].getText().equals("W") && btnEmpty[4+x].getText().equals("W") && btnEmpty[7+x].getText().equals("W")) {
+        for(int x = 1; x <= 7; x+=3) {
+            if(btnEmpty[x].getText().equals("W") && btnEmpty[x+1].getText().equals("W") && btnEmpty[x+2].getText().equals("W")) {
                 wWinMessage();
-    		}else if(btnEmpty[1+x].getText().equals("L") && btnEmpty[4+x].getText().equals("L") && btnEmpty[7+x].getText().equals("L")) {
+            }else if(btnEmpty[x].getText().equals("L") && btnEmpty[x+1].getText().equals("L") && btnEmpty[x+2].getText().equals("L")) {
                 lWinMessage();
-    		}
-    	if(btnEmpty[1].getText().equals("W") && btnEmpty[5].getText().equals("W") && btnEmpty[9].getText().equals("W")) {
+            }
+        }
+        for(int x = 0; x <= 2; x++)
+            if(btnEmpty[1+x].getText().equals("W") && btnEmpty[4+x].getText().equals("W") && btnEmpty[7+x].getText().equals("W")) {
+                wWinMessage();
+            }else if(btnEmpty[1+x].getText().equals("L") && btnEmpty[4+x].getText().equals("L") && btnEmpty[7+x].getText().equals("L")) {
+                lWinMessage();
+            }
+        if(btnEmpty[1].getText().equals("W") && btnEmpty[5].getText().equals("W") && btnEmpty[9].getText().equals("W")) {
             wWinMessage();
-		}else if(btnEmpty[3].getText().equals("W") && btnEmpty[5].getText().equals("W") && btnEmpty[7].getText().equals("W")) {
+        }else if(btnEmpty[3].getText().equals("W") && btnEmpty[5].getText().equals("W") && btnEmpty[7].getText().equals("W")) {
             lWinMessage();
-		}else if(btnEmpty[1].getText().equals("L") && btnEmpty[5].getText().equals("L") && btnEmpty[9].getText().equals("L")) {
+        }else if(btnEmpty[1].getText().equals("L") && btnEmpty[5].getText().equals("L") && btnEmpty[9].getText().equals("L")) {
             wWinMessage();
-		}else if(btnEmpty[3].getText().equals("L") && btnEmpty[5].getText().equals("L") && btnEmpty[7].getText().equals("L")) {
+        }else if(btnEmpty[3].getText().equals("L") && btnEmpty[5].getText().equals("L") && btnEmpty[7].getText().equals("L")) {
             lWinMessage();
-		}
-    	int counter = 0;
+        }
+        int counter = 0;
         for(int x=1; x <= 9; ++x)   
         {
             if(btnEmpty[x].getText() == "W" || btnEmpty[x].getText() == "L") {
-            	counter++;
+                counter++;
             }
         }
         if(counter == 9) {
-        	dWinMessage();
+            dWinMessage();
         }
 
     } */

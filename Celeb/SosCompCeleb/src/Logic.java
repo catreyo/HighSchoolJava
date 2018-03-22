@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.awt.event.*;
 
 public class Logic
 {
@@ -71,6 +72,7 @@ public class Logic
         fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
         int result = fileChooser.showOpenDialog(null);
         File user = null;
+        GUI g = new GUI();
         if (result == JFileChooser.APPROVE_OPTION) {
             user = fileChooser.getSelectedFile();
             System.out.println("Selected file: " + user.getAbsolutePath());
@@ -99,6 +101,7 @@ public class Logic
         System.out.println();
         System.out.println(maxIndex);
         try {
+            g.close();
             displayImage(celebs[maxIndex].getFile(), user,  celebs[maxIndex].getName());
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -135,8 +138,14 @@ public class Logic
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        JButton button = new JButton("Play Again!");
-        JButton button2 = new JButton("Quit :( fuq u suna");
-        frame.add(button); frame.add(button2);
-    }    
+        //JButton button = new JButton("Play Again!");
+        JButton button2 = new JButton("Quit");
+        //frame.add(button);
+        frame.add(button2);
+    }
+    
+    public void actionPerformed(ActionEvent event) 
+    {
+        System.exit(0);
+    }
 }

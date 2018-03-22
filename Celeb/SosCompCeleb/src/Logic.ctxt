@@ -5,4 +5,6 @@ comment1.params=
 comment1.target=void\ game()
 comment2.params=URL\ User\ name
 comment2.target=void\ displayImage(java.io.File,\ java.io.File,\ java.lang.String)
-numComments=3
+comment3.params=event
+comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=4
