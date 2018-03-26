@@ -139,9 +139,9 @@ public class Logic
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         //JButton button = new JButton("Play Again!");
-        JButton button2 = new JButton("Quit");
+        //JButton button2 = new JButton("Quit");
         //frame.add(button);
-        frame.add(button2);
+        //frame.add(button2);
     }
     
     public void actionPerformed(ActionEvent event) 
